@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Linking to define the colors (up one level, and in theme) -->
+		<script src="../jQueryLib/theme/external/jquery/jquery.js"></script>
+		<link href="../jQueryLib/theme/jquery-ui.css" rel="stylesheet" >
+		<!-- Linking to setup the page -->
+		<link href="css/loginPage.css" rel="stylesheet">
+		<!-- Providing UI functionality -->
+		<script type="text/javascript" src="../jQueryLib/theme/jquery-ui.js"></script>
+		 <!-- jQuery UI touch-punch -->
+                <script type="text/javascript" src="../jQueryLib/theme/jquery.ui.touch-punch.min.js"></script>
+		<!-- page functionality -->
+		<script src="js/loginPage.js"></script>
+		<title>Group Management Login Page</title>
+	</head>
+	<body>
+		<h1 class="center">Group Management Tool</h1>
+		<div id="login" class="pageCenter">
+			<form id="loginForm">
+				<h2 class="ui-widget-header row">Login</h2>
+				<span class="row">
+					<label for="loginUserName" class="third">User name</label>
+					<input type="text" id="loginUserName" class="twoThirds"></input>
+				</span>
+				<span class="rowTight">
+					<label for="loginPassword" class="third">Password</label>
+					<input type="password" id="loginPassword" class="twoThirds"></input>
+				</span>
+				<span class="rowTight">
+					<!-- TODO: implement "forgot username" feature -->
+					<a id="forgotUsernameLink" class="center half" href="">Forgot username?</a>
+					<!-- TODO: implement "forgot password" feature -->
+					<a id="forgotPasswordLink" class="center half" href="">Forgot password?</a>
+				</span>
+				<span class="row">
+					<input type="submit" id="loginBtn" class="third" value="Login" />
+					<!--<button id="protoLogin" title="Populates login form with login data for the prototype" value="Prototype"-->
+				</span>
+			</form>
+		</div>
+	</body>
+</html>
