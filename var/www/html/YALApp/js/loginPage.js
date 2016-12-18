@@ -6,10 +6,52 @@ $(document).ready(
 			alert("Invalid login credentials.");
 			
 		}
+		$('.dialog').dialog({
+			autoOpen: false,
+			buttons: [
+				{
+					text: "Populate fields",
+					click: function()
+					{
+						// fetch the hidden loginInfo for the option chosen
+						var loginInfo = $('.dialog [type="radio"]').filter(function() { return $(this).prop('checked'); }).nextAll('input[type="hidden"]');
+						// populate login form with it (assume first two input elements are username,password)
+						$('#login input').filter(function(index) { return index < 2; }).each(function(index) { $(this).val($(loginInfo[index]).val() )});
+						// close the dialog
+						$(this).dialog("close");
+						// should I just login from here?
+					}
+				},
+				{
+					text: "Cancel",
+					click: function()
+					{
+						// just close the dialog
+						$(this).dialog("close");
+					}
+				}
+			]
+		});
 		$('#loginBtn').button();
-		$('#login').click(populateLogin);
-		$('#forgotUsernameLink').click(populateUsername);
-		$('#forgotPasswordLink').click(populatePassword);
+		//$('#login').find(':not(input)').click(populateLogin);
+		$('#login').find(':not(input):not(a)').filter(function() { return (!($(this).find('input').length) && !($(this).find('a').length)); } ).click(showSampleUserDialog);
+		$('#forgotUsernameLink').click(
+			function(e)
+			{	
+				populateUsername();
+				// if this is link, prevent its default action
+				if ($(this).prop('tagName').toUpperCase() == 'A')
+					e.preventDefault();
+			}
+		);
+		$('#forgotPasswordLink').click(
+			function(e)
+			{
+				populatePassword();
+				if ($(this).prop('tagName').toUpperCase() == 'A')
+					e.preventDefault();
+			}
+		);
 		$('#loginForm').submit(function(e)
 		{
 			// get login credentials
@@ -38,16 +80,20 @@ $(document).ready(
 					success: function (results)
 					{
 						console.log(results);
-						window.location = '/YALApp';
+						if (!$('.progress').parent().hasClass('hidden')) $('.progress').parent().addClass('hidden');
+						window.location = results.data.targetURL;
 					},
 					error: function(e)
 					{
 						var ext = window.location.href.match(/(fail)/) ? "" : "?fail";
-						window.location = window.location + ext;
+						if (!$('.progress').parent().hasClass('hidden')) $('.progress').parent().addClass('hidden');
 						console.log(JSON.stringify(e, null, '\t'));
+						if (window.location.toString().substr(window.location.toString().indexOf('?')) != '?fail')
+							window.location = window.location + ext;
 						return false;
 					}
 				});
+				if ($('.progress').parent().hasClass('hidden')) $('.progress').parent().removeClass('hidden');
 			}
 			return false;
 		});
@@ -114,4 +160,11 @@ function populateUsername()
 function populatePassword()
 {
 	$('#loginPassword').val('Sample0x50617373');
+	// if this is link, prevent its default action
+}
+
+// wrapper function to show dialog
+function showSampleUserDialog()
+{
+	$('.dialog').dialog('open');
 }

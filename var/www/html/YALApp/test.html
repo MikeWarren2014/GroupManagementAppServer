@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Linking to define the colors (up one level, and in theme) -->
+		<script src="../jQueryLib/theme/external/jquery/jquery.js"></script>
+		<link href="../jQueryLib/theme/jquery-ui.css" rel="stylesheet" >
+		<!-- Mustache -->
+		<script type="text/javascript" src="https://mikewarren.me/jQueryLib/mustache/jquery.mustache.js"></script>
+		<!-- Providing UI functionality -->
+		<script type="text/javascript" src="../jQueryLib/theme/jquery-ui.js"></script>
+		<!-- DataTable plugin -->
+		<!--<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+		<!-- jQuery UI special-made for DataTable -->
+		<!--<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/dataTables.jqueryui.min.js"></script>-->
+		<!-- async library -->
+		<script type="text/javascript" src="../asyncLib/async.js"></script>
+		<!-- Page builder and functionality-->
+		<script type="text/javascript" src="js/test.js"></script>
+		<script type="text/javascript" src="js/indexFunctions.js"></script>
+		<!--Class dependencies-->
+		<script type="text/javascript" src="js/UserInput.js"></script>
+		<script type="text/javascript" src="js/Employee.js"></script>
+		<script type="text/javascript" src="js/EmployeeEntry.js"></script>
+		<script type="text/javascript" src="js/EmployeeEntryError.js"></script>
+		<script type="text/javascript" src="js/InventoryEntry.js"></script>
+		<script type="text/javascript" src="js/InventoryEntryError.js"></script>
+		<script type="text/javascript" src="js/InventoryRecord.js"></script>
+		
+		<link href="css/index.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="pageHeader" class="textRight">
+			{{displayName}} | 
+			<a href="/service/logout" id="logout">Logout</a>
+		</div>
+		<h1>{{userType}}</h1>
+		<p class="ui-widget">{{displayName}}</p>
+		<div id="tabs">
+			<ul>
+				{{#tabMetaData.tabs}}
+				{{#privileges}}
+				<li><a href="#{{tabName}}">{{displayName}}</a></li>
+				{{/privileges}}
+				{{/tabMetaData.tabs}}
+			</ul>
+			
+		</div>
+		{{^tabMetaData.tabs}}
+		<h1>Tabs unavailable</h1>	
+		<p>No tabs are available :(</p>
+		{{/tabMetaData.tabs}}
+		<div class="dialog" id="hireEmployeeDialog" title="Hire Employee?">
+			<span class="rowTight">
+				<label>First Name: </label>
+				<label id="dialogFirstName"><b>Joe</b></label>
+			</span>
+			<span class="rowTight">
+				<label>Last Name: </label>
+				<label id="dialogLastName"><b>Schome</b></label>
+			</span>
+			<span class="rowTight">
+				<label>Password: </label>
+				<label id="dialogPassword"><b>NunyaBusiness</b></label>
+			</span>
+			<span class="rowTight">
+				<label>E-mail: </label>
+				<label id="dialogEmail"><b>whySoSerious@gmail.com</b></label>
+			</span>
+			<span class="rowTight">
+				<label>Social Security Number: </label>
+				<label id="dialogSSN"><b>333-33-3333</b></label>
+			</span>
+			<span class="rowTight">
+				<label>Date of hire: </label>
+				<label id="dialogDateOfHire"><b>12/6/2015</b></label>
+			</span>
+			<span class="rowTight">
+				<label>Positions: </label>
+				<label id="dialogPositions"><b>Handler</b></label>
+			</span>
+			<span class="rowTight">
+				<label>Departments: </label>
+				<label id="dialogDepartments"><b>Inbound 1</b></label>
+			</span>
+		<!--</jqueryui-dialog>-->
+		</div>
+		<!--<jqueryui-dialog id="errorDialog" title="The following entries are not valid">-->
+		<div id="errorDialog" class="dialog" title="The following entries are not valid">
+			<div class="rowTight">
+				<span class="row">The following entries are missing: </span>
+				<div id="missingDataFields" class="row" style="white-space: pre-line;"></div>
+				<span class="row">The following entries contain invalid input: </span>
+				<div id="invalidDataFields" class="row" style="white-space: pre-line;"></div>
+			</div>
+		<!-- </jqueryui-dialog> -->
+		</div>
+		
+		<div id="modifyInventoryDialog" class="dialog" title="Write inventory to table?">
+			<div class="rowTight">
+				<span class="row"><span id="entryAddDelete">Add</span> <span id="entryAmount">1</span> units of the following inventory entry:</span>
+				<span class="rowTight">
+					<label>Item name: </label>
+					<label id="entryItem"><b>Books</b></label>
+				</span>
+				<span class="rowTight">
+					<label>Container name: </label>
+					<label id="entryContainer"><b>Skid 4</b></label>
+				</span>
+				<span class="rowTight">
+					<label>Location name: </label>
+					<label id="entryLocation"><b>Inventory</b></label>
+				</span>
+				<span class="row">?</span>
+			</div>
+		</div>
+		
+		<div id="invalidInventoryDialog" class="dialog" title="Problem with inventory entry">
+			<div class="rowTight">
+				<span class="row">The following problem exists with your inventory entry: </span>
+				<div id="missingEntries" class="hidden">
+					<span class="row">Missing entries</span>
+					<!--<div id="missingEntriesField" class="rowTight" style="white-space: pre-line;"></div>-->
+					<ul id="missingEntriesField" class="rowTight"></ul>
+				</div>
+				<div id="invalidEntries" class="hidden">
+					<span class="row">Invalid entries:</span>
+					<!--<div id="invalidEntriesField" class="rowTight" style="white-space: pre-line;"></div>-->
+					<ul id="invalidEntriesField" class="rowTight"></ul>
+				</div>
+				<div class="rowTight" id="otherIssues" style="white-space: pre-line;">
+					<span class="row">Other errors:</span>
+					<ul id="otherIssueField" class="rowTight"></ul>
+				</div>
+			</div>
+		</div>
+		
+		<div id="reportInventoryDialog" class="dialog" title="Report inventory item?">
+			<span class="row">Report the following inventory item: </span>
+			<div class="row">
+				<span class="rowTight">Item name: <span id="reportedItemName"><b></b></span></span>
+				<span class="rowTight">Item container: <span id="reportedItemContainer"><b></b></span></span>
+				<span class="rowTight">Item amount: <span id="reportedItemAmount"><b></b></span></span>
+				<span class="rowTight">Item location: <span id="reportedItemLocation"><b></b></span></span>
+			</div>
+			<span class="row">
+				to: <span id="inventoryManagement"></span>
+			</span>
+			<span class="row">
+				<span class="rowTight">Note (optional): </span>
+				<textarea class="fullWidth row"></textarea>
+			</span>
+			<span class="row">The person selected will receive e-mail instructing them to tally the selected item</span>
+		</div>
+	</body>
+</html>

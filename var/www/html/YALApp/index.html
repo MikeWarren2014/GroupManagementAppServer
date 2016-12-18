@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Linking to define the colors (up one level, and in theme) -->
+		<script src="../jQueryLib/theme/external/jquery/jquery.js"></script>
+		<link href="../jQueryLib/theme/jquery-ui.css" rel="stylesheet" >
+		<script type="text/javascript" src="js/serverCheck.js"></script>
+		<!-- Linking to setup the page -->
+		<link href="css/base.css" rel="stylesheet">
+		<link href="css/index.css" rel="stylesheet">
+		<!-- Providing UI functionality -->
+		<script type="text/javascript" src="../jQueryLib/theme/jquery-ui.js"></script>
+		<!-- DataTable plugin -->
+		<!--<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+		<!-- jQuery UI special-made for DataTable -->
+		<!--<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/dataTables.jqueryui.min.js"></script>
+		<!-- jQuery UI touch-punch -->
+		<script type="text/javascript" src="../jQueryLib/theme/jquery.ui.touch-punch.min.js"></script>
+		<!-- jQuery Mobile dependency -->
+		<!--<script type="text/javascript" src="../jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+		<!-- Functionality for the page -->
+		<script type="text/javascript" src="js/indexFunctions.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<!-- Class dependencies -->
+		<script type="text/javascript" src="js/UserInput.js"></script>
+		<script type="text/javascript" src="js/Employee.js"></script>
+		<script type="text/javascript" src="js/EmployeeEntry.js"></script>
+		<script type="text/javascript" src="js/EmployeeEntryError.js"></script>
+		<script type="text/javascript" src="js/InventoryEntry.js"></script>
+		<script type="text/javascript" src="js/InventoryEntryError.js"></script>
+		<script type="text/javascript" src="js/InventoryRecord.js"></script>
+		<title>Young Americans for Liberty at IUPUI</title>
+	</head>
+	<body>
+		<h1>Admin Page</h1>
+		<div class="ui-widget">
+			<p>This page is to be used by presidents and admins</p>
+		</div>
+		<h2 class="demoHeaders">Admin Page Options</h2>
+		<div id="tabs">
+			<ul>
+				<li><a href="#groupMembers">View/Add Group Members</a></li>
+				<li><a href="#availability">View Availability</a></li>
+				<li><a href="#inventory">View/Edit Inventory</a></li>
+				<li><a href="#inventoryItems">Manage Reported Items</a></li>
+				<li><a href="#inventoryHistory">View Inventory History</a></li>
+				<li><a href="#externalLinks">External links</a></li>
+			</ul>
+			<div id="groupMembers">
+				<div id="tableDivFirstTab">
+					<h3 class="demoHeaders">Group Members</h3>
+					<table id="employeeTable">
+						<thead class="ui-widget-header">
+							<tr id="titleRow">
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>E-mail</th>
+								<th>Phone number</th>
+								<th>Member Join Date</th>
+								<th>Role</th>
+								<th>Department</th> <!-- To be deprecated -->
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody class="ui-widget-content">
+							<tr id="1">
+								<td>
+									<input type="text" name="firstName" value="Jill" />
+								</td>
+								<td>
+									<input type="text" name="lastName" value="Smith" />
+								</td>
+								<td>
+									<input type="email" name="email" value="jsmith@gmail.com" />
+								</td>
+								<td>
+									<input type="tel" name="phoneNumber" value="(317)555-5555" />
+								</td>
+								<td>
+									<input type="text" name="hireDate" class="datePicker" value="12/6/2015" />
+								</td>
+								<td>
+									<select name="Roles">
+										<option id="employeeOption" data-inventory-manage="false" selected>Employee</option>
+										<option id="salesPersonOption" data-inventory-manage="false">Sales</option>
+										<option id="receivingOption" data-inventory-manage="false">Receiving</option>
+										<option id="inventoryManagementOption" data-inventory-manage="true">Inventory Management</option>
+										<option id="handlerOption" data-inventory-manage="true">Handler</option>
+										<option id="managerOption" data-inventory-manage="true">Manager</option>
+										<option id="adminOption" data-inventory-manage="true">Admin</option>
+									</select>
+								</td>
+								<!-- To be deprecated... -->
+								<td>
+									<select name="Departments">
+										<option id="inbound1Option" selected>Inbound 1</option>
+										<option id="inbound2Option">Inbound 2</option>
+										<option id="inbound3Option">Inbound 3</option>
+										<option id="outbound1Option">Outbound 1</option>
+										<option id="outbound2Option">Outbound 2</option>
+										<option id="outbound3Option">Outbound 3</option>
+										<option id="salesOption">Sales</option>
+										<option id="inventoryOption">Inventory</option>
+										<option id="itOption">IT</option>
+										<option id="managmentOption">Management</option>
+									</select>
+								</td>
+								<td>
+									<!-- 
+									<ul id="icons" class="ui-widget ui-helper-clearfix">
+										<li class="ui-state-default ui-corner-all" title=".ui-icon-trash">
+											<span class="ui-icon ui-icon-trash"></span>
+										</li>
+									</ul>
+									-->
+									<button class="ui-state-default ui-corner-all" title="Delete User"><span class="ui-icon ui-icon-trash"></span></button>
+									<button class="ui-state-default ui-corner-all" title="Reset Password"><span class="ui-icon ui-icon-key"></span></button>
+									<button class="ui-state-default ui-corner-all" title="Save Changes"><span class="ui-icon ui-icon-disk"></span></button>
+								</td>
+							<tr id="2">
+								<td>
+									<input type="text" name="firstName" value="Mike" />
+								</td>
+								<td>
+									<input type="text" name="lastName" value="Warren" />
+								</td>
+								<td>
+									<input type="email" name="email" value="mwarren@gmail.com" />
+								</td>
+								<td>
+									<input type="tel" name="phoneNumber" value="(317)909-0909" />
+								</td>
+								<td>
+									<input type="text" name="hireDate" class="datePicker" value="1/11/2015" />
+								</td>
+								<td>
+									<select name="Roles">
+										<option id="employeeOption" data-inventory-manage="false">Employee</option>
+										<option id="salesPersonOption" data-inventory-manage="false">Sales</option>
+										<option id="receivingOption" data-inventory-manage="false">Receiving</option>
+										<option id="inventoryManagementOption" data-inventory-manage="true">Inventory Management</option>
+										<option id="handlerOption" data-inventory-manage="true">Handler</option>
+										<option id="managerOption" data-inventory-manage="true">Manager</option>
+										<option id="adminOption" data-inventory-manage="true" selected>Admin</option>
+									</select>
+								</td>
+								<!-- To be deprecated... -->
+								<td>
+									<select name="Departments">
+										<option id="inbound1Option">Inbound 1</option>
+										<option id="inbound2Option">Inbound 2</option>
+										<option id="inbound3Option">Inbound 3</option>
+										<option id="outbound1Option">Outbound 1</option>
+										<option id="outbound2Option">Outbound 2</option>
+										<option id="outbound3Option">Outbound 3</option>
+										<option id="salesOption">Sales</option>
+										<option id="inventoryOption" selected>Inventory</option>
+										<option id="itOption">IT</option>
+										<option id="managmentOption">Management</option>
+									</select>
+								</td>
+								<td>
+									<button class="ui-state-default ui-corner-all" title="Delete User"><span class="ui-icon ui-icon-trash"></span></button>
+									<button class="ui-state-default ui-corner-all" title="Reset Password"><span class="ui-icon ui-icon-key"></span></button>
+									<button class="ui-state-default ui-corner-all" title="Save Changes"><span class="ui-icon ui-icon-disk"></span></button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="row">
+						<button class="right">Save</button>
+					</div>
+				</div>
+				<div id="enterEmployee">
+					<h3 class="demoHeaders">Add new member</h3>
+					<div id="employeeEntryGuidelines">
+						<h4 class="demoHeaders row"><u>Data entry guidelines</u></h4>
+						<ul>
+							<li>First,Last name MUST be capitalized</li>
+							<li>Password MUST be provided and must meet the following criteria:</li>
+								<ul>
+									<li>minimum of 8 characters</li>
+									<li>have at least one numeric character</li>
+								</ul>
+							<li>
+								Phone number must be in one of the following formats: 
+								<ul>
+									<li>(xxx)xxx-xxxx</li>
+									<li>(xxx) xxx-xxxx</li>
+									<li>xxx-xxx-xxxx</li>
+									<li>xxxxxxxxxx</li>
+									<li>1xxxxxxxxxx</li>
+								</ul>
+							</li>
+							<li>At least one position,department must be selected for group member</li>
+						</ul>
+					</div>
+					<form id="hireEmployee" method="get">
+						<fieldset>
+							<div class="row">
+								<label for="firstName" class="firstColumn">First Name:</label>
+								<div class="secondColumn">
+									<input id="firstName" placeholder="First name" type="text"/>
+									<div id="firstNameNotification" class="ui-widget secondColumn hidden">
+										<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+											<p>
+												<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+												Incorrect first name format.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">							
+								<span class="firstColumn">Last Name:</span>
+								<div class="secondColumn">
+									<input id="lastName" placeholder="Last name" type="text"/>
+									<div id="lastNameNotification" class="ui-widget secondColumn hidden">
+										<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+											<p>
+												<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+												Incorrect last name format.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<label for="password" class="firstColumn">Password:</label>
+								<div class="secondColumn">
+									<input type="password" id="password" placeholder="Password"/>
+									<div id="passwordNotification" class="ui-widget secondColumn hidden">
+										<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+											<p>
+												<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+												Incorrect password format.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<label for="email" class="firstColumn">E-mail address:</label>
+								<div class="secondColumn">
+									<input type="email" id="email" placeholder="E-mail"/>
+									<div id="emailNotification" class="ui-widget secondColumn hidden">
+										<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+											<p>
+												<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+												Incorrect e-mail format.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<label for="employeePhoneNumber" class="firstColumn">Phone number:</label>
+								<div class="secondColumn">
+									<input type="tel" id="employeePhoneNumber" placeholder="(317)333-3333" />
+									<div id="phoneNumberNotification" class="ui-widget secondColumn hidden">
+										<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+											<p>
+												<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+												Incorrect phone number format.
+											</p>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							<div class="row">
+								<label class="firstColumn">Member join date:</label>
+								<div class="secondColumn datePicker" id="datepicker"></div>
+							</div>
+							<div class="row">
+								<label class="firstColumn">Positions:</label>
+								<!-- Should this change to radio buttons? -->
+								<div class="secondColumn">
+									<input type="checkbox" name="positions" id="EmployeePosition" checked />
+									<label for="EmployeePosition">Employee</label>
+									<input type="checkbox" name="positions" id="SalesPosition" />
+									<label for="SalesPosition">Sales</label>
+									<input type="checkbox" name="positions" id="ReceivingPosition" />
+									<label for="ReceivingPosition">Receiving</label>
+									<input type="checkbox" name="positions" id="InventoryManagementPosition" />
+									<label for="InventoryManagementPosition">Inventory Management</label>
+									<input type="checkbox" name="positions" id="HandlerPosition">
+									<label for="HandlerPosition">Handler</label>
+									<input type="checkbox" name="positions" id="TechnicalSupportPosition" />
+									<label for="TechnicalSupportPosition">Technical Support</label>
+									<input type="checkbox" name="positions" id="ManagerPosition" />
+									<label for="ManagerPosition">Manager</label>
+									<div id="positionNotification" class="ui-widget secondColumn hidden">
+										<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+											<p>
+												<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+												Please select a position.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- To be deprecated... -->
+							<div class="row">
+								<label class="firstColumn">Department:</label>
+								<div class="secondColumn">
+									<input type="radio" name="departments" id="Inbound1Department" checked />
+									<label for="Inbound1Department">Inbound 1</label>
+									<input type="radio" name="departments" id="Inbound2Department"/>
+									<label for="Inbound2Department">Inbound 2</label>
+									<input type="radio" name="departments" id="Inbound3Department"/>
+									<label for="Inbound3Department">Inbound 3</label>
+									<input type="radio" name="departments" id="Outbound1Department"/>
+									<label for="Outbound1Department">Outbound 1</label>
+									<input type="radio" name="departments" id="Outbound2Department"/>
+									<label for="Outbound2Department">Outbound 2</label>
+									<input type="radio" name="departments" id="Outbound3Department"/>
+									<label for="Outbound3Department">Outbound 3</label>
+									<input type="radio" name="departments" id="SalesDepartment"/>
+									<label for="SalesDepartment">Sales</label>
+									<input type="radio" name="departments" id="InventoryDepartment"/>
+									<label for="InventoryDepartment">Inventory</label>
+									<input type="radio" name="departments" id="ITDepartment"/>
+									<label for="ITDepartment">IT</label>
+									<input type="radio" name="departments" id="ManagementDepartment"/>
+									<label for="ManagementDepartment">Management</label>
+								</div>
+							</div>
+							<div class="row center lastRow">
+								<button type="reset" id="ClearSelections">Clear selections</button>
+								<input type="submit" id="addRoles" value="Add Member/Roles"/>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			<div id="availability">
+				<div id="availabilityPanel">
+					<h3 class="demoHeaders">Member availability</h3>
+					<div class="buttonGroup" id="daysOfWeek">
+						<input type="radio" id="Sunday" name="radio"><label for="Sunday">Sunday</label>
+						<input type="radio" id="Monday" name="radio"><label for="Monday">Monday</label>
+						<input type="radio" id="Tuesday" name="radio"><label for="Tuesday">Tuesday</label>
+						<input type="radio" id="Wednesday" name="radio"><label for="Wednesday">Wednesday</label>
+						<input type="radio" id="Thursday" name="radio"><label for="Thursday">Thursday</label>
+						<input type="radio" id="Friday" name="radio"><label for="Friday">Friday</label>
+						<input type="radio" id="Saturday" name="radio"><label for="Saturday">Saturday</label>
+					</div>
+					<div id="availabilitySchedule" class="row">
+						<div id="SundayAvailability">
+						</div>
+						<div id="MondayAvailability">
+						</div>
+						<div id="TuesdayAvailability">
+						</div>
+						<div id="WednesdayAvailability">
+						</div>
+						<div id="ThursdayAvailability">
+						</div>
+						<div id="FridayAvailability">
+						</div>
+						<div id="SaturdayAvailability">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="inventory">
+				<div id="tableDivThirdTab">
+					<h3 class="demoHeaders">Inventory</h3>
+					<table id="inventoryTable">
+						<thead class="ui-widget-header">
+							<tr id="inventoryTableTitleRow">
+								<th>Item</th>
+								<th>Container</th>
+								<th>Amount</th>
+								<th>Location</th>
+								<!--<th>Report Item</th>
+								<th>Remove From List</th>	<!-- should this even be here? -->
+								<th>Options</th>
+							</tr>
+						</thead>
+						<tbody class="ui-widget-content">
+							<tr id="inventory1">
+								<td>
+									<input class="itemAutoComplete" name="item" value="Books"/>
+								</td>
+								<td>
+									<input class="containerAutoComplete" name="container" value="Skid 1" />
+								</td>
+								<td>
+									<input class="spinner" name="amount" value="500" />
+								</td>
+								<td>
+									<input class="locationAutoComplete" name="location" value="Inventory"/>
+								</td>
+								<td>
+									<!-- Report to inventory management button (should I use "ui-icon-contact" instead?) -->
+									<button class="ui-state-default ui-corner-all" title="Report item to inventory management" name="reportItem">
+										<span class="ui-icon ui-icon-clipboard"></span>
+									</button> 
+									<!-- Delete current inventory entry -->
+									<button class="ui-state-default ui-corner-all" title="Delete current inventory entry">
+										<span class="ui-icon ui-icon-trash"></span>
+									</button> 
+								</td>
+							</tr>
+							<tr id="inventory2">
+								<td>
+									<input class="itemAutoComplete" name="item" value="Books"/>
+								</td>
+								<td>
+									<input class="containerAutoComplete" name="container" value="Skid 2" />
+								</td>
+								<td>
+									<input class="spinner" name="amount" value="350" />
+								</td>
+								<td>
+									<input class="locationAutoComplete" name="location" value="Inventory"/>
+								</td>
+								<td>
+									<!-- Report to inventory management button (should I use "ui-icon-contact" instead?) -->
+									<button class="ui-state-default ui-corner-all" title="Report item to inventory management" name="reportItem">
+										<span class="ui-icon ui-icon-clipboard"></span>
+									</button> 
+									<!-- Delete current inventory entry -->
+									<button class="ui-state-default ui-corner-all" title="Delete current inventory entry">
+										<span class="ui-icon ui-icon-trash"></span>
+									</button> 
+								</td>
+							</tr>
+							<tr id="inventory3">
+								<td>
+									<input class="itemAutoComplete" name="item" value="Books"/>
+								</td>
+								<td>
+									<input class="containerAutoComplete" name="container" value="Skid 3" />
+								</td>
+								<td>
+									<input class="spinner" name="amount" value="3500" />
+								</td>
+								<td>
+									<input class="locationAutoComplete" name="location" value="Inbound 1"/>
+								</td>
+								<td>
+									<!-- Report to inventory management button (should I use "ui-icon-contact" instead?) -->
+									<button class="ui-state-default ui-corner-all" title="Report item to inventory management" name="reportItem">
+										<span class="ui-icon ui-icon-clipboard"></span>
+									</button> 
+									<!-- Delete current inventory entry -->
+									<button class="ui-state-default ui-corner-all" title="Delete current inventory entry">
+										<span class="ui-icon ui-icon-trash"></span>
+									</button> 
+								</td>
+							</tr>
+							<tr id="inventory4">
+								<td>
+									<input class="itemAutoComplete" name="item" value="Cards"/>
+								</td>
+								<td>
+									<input class="containerAutoComplete" name="container" value="Skid 2" />
+								</td>
+								<td>
+									<input class="spinner" name="amount" value="300" />
+								</td>
+								<td>
+									<input class="locationAutoComplete" name="location" value="Inventory"/>
+								</td>
+								<td>
+									<!-- Report to inventory management button (should I use "ui-icon-contact" instead?) -->
+									<button class="ui-state-default ui-corner-all" title="Report item to inventory management" name="reportItem">
+										<span class="ui-icon ui-icon-clipboard"></span>
+									</button> 
+									<!-- Delete current inventory entry -->
+									<button class="ui-state-default ui-corner-all" title="Delete current inventory entry">
+										<span class="ui-icon ui-icon-trash"></span>
+									</button> 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="row">
+						<button class="right">Save<button>
+					</div>
+				</div>
+				<div id="modifyInventory">
+					<h3 class="demoHeaders">Add/Remove Inventory</h3>
+					<span class="row center">
+						<label for="inventoryModificationOptions">Please select option: </label>
+						<select id="inventoryModificationOptions">
+							<!-- TODO: add menu option for reporting option -->
+							<option id="AddItemsOption">Add Items</option>
+							<option id="RemoveItemsOption">Remove Items</option>
+						</select>
+					</span>
+					<form>
+						<div class="row">
+							<h4 class="demoHeaders" id="inventoryModificationOption">Form</h4>	<!-- Only contains text to remove w3.org warning -->
+							<span class="rowTight">
+								<label for="itemToModify" class="firstColumn">Name of item: </label>
+								<input class="itemAutoComplete secondColumn" id="itemToModify" />
+								<span id="itemError" class="hidden">error</span>
+							</span>
+							<span class="rowTight">
+								<label for="itemContainer" class="firstColumn">Name of container: </label>
+								<input class="containerAutoComplete secondColumn" id="itemContainer" />
+								<span id="containerError" class="hidden">error</span>
+							</span>
+							<span class="rowTight">
+								<label for="itemLocation" class="firstColumn">Location: </label>
+								<input class="locationAutoComplete secondColumn" id="itemLocation" />
+								<span id="locationError" class="hidden">error</span>
+							</span>
+							<div class="rowTight">
+								<!-- TODO: add option for reporting entry -->
+								<span id="amountToAddRow" class="rowTight">
+									<label class="firstColumn">Amount to add: </label>
+									<input class="spinner secondColumn" id="amountToAdd" />
+								</span>
+								<div id="amountToRemoveRow" class="rowTight">
+									<label class="firstColumn">Amount to remove: </label>
+									<div class="slider secondColumn" id="amountToRemove"></div>
+									<input class="number textRight" type="text" id="selectedAmountToRemove" min="0"></input>
+								</div>
+							</div>
+							<div class="row center lastRow">
+								<button type="reset" id="ClearInventorySelections">Clear selections</button>
+								<input type="submit" id="submitInventoryModification" value="Modify Inventory"/>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div id="inventoryItems">
+				<div id="tableIDFourthTab">
+					<h3 class="demoHeaders">Reported Items</h3>
+					<table id="reportedItemsTable">
+						<thead class="ui-widget-header">
+							<tr id="reportedItemsTitleRow">
+								<th>Item</th>
+								<th>Container</th>
+								<th>Amount</th>
+								<th>Location</th>
+								<th>Reported to</th>
+								<th>Note</th>
+							</tr>
+						</thead>
+						<tbody class="ui-widget-body">
+							<tr>
+							
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div id="inventoryHistory">
+				<div id="tableIDFifthTab">
+					<h3 class="demoHeaders">Inventory History Log</h3>
+					<table id="inventoryHistoryTable">
+						<thead class="ui-widget-header">
+							<tr id="inventoryHistoryTitleRow">
+								<td>Item</td>
+								<td>Container</td>
+								<td>Location</td>
+								<td>Entry Date</td>
+								<td>Amount</td>
+							</tr>
+						</thead>
+						<tbody class="ui-widget-body">
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div id="externalLinks">
+				<h3 class="demoHeaders">External links</h3>
+				<p> Links to external sites, including other sites for this group, go here. You may add description to the external links you are trying to add, as well as edit description.</p>
+				<!-- TODO: Make this form operational. -->
+				<h4 class="demoHeaders">Add external link</h4>
+				<form id="addExternalLink" method="get">
+					<span class="rowTight">
+						<label class="column tenth">Title of link:</label>
+						<input type="text" id="newLinkTitle" class="column fifth" title="The text that will display for this link. If nothing is entered here, the URL will display instead."></input>
+					</span>
+					<span class="rowTight">
+						<label class="column tenth">URL: </label>
+						<input type="text" class="column threeFifths" id="newLinkURL" />
+					</span>
+					<span class="row center lastRow">
+						<button type="reset" id="ClearExternalLinkForm">Clear</button>
+						<input type="submit" id="CreateExternalLink" value="Create Link" />
+					</span>
+				</form>
+			</div>
+		</div>
+		<!--<jqueryui-dialog id="hireEmployeeDialog" title="Hire Employee?">-->
+		<div class="dialog" id="hireEmployeeDialog" title="Hire Employee?">
+			<span class="rowTight">
+				<label>First Name: </label>
+				<label id="dialogFirstName"><b>Joe</b></label>
+			</span>
+			<span class="rowTight">
+				<label>Last Name: </label>
+				<label id="dialogLastName"><b>Schome</b></label>
+			</span>
+			<span class="rowTight">
+				<label>Password: </label>
+				<label id="dialogPassword"><b>NunyaBusiness</b></label>
+			</span>
+			<span class="rowTight">
+				<label>E-mail: </label>
+				<label id="dialogEmail"><b>whySoSerious@gmail.com</b></label>
+			</span>
+			<span class="rowTight">
+				<label>Social Security Number: </label>
+				<label id="dialogSSN"><b>333-33-3333</b></label>
+			</span>
+			<span class="rowTight">
+				<label>Date of hire: </label>
+				<label id="dialogDateOfHire"><b>12/6/2015</b></label>
+			</span>
+			<span class="rowTight">
+				<label>Positions: </label>
+				<label id="dialogPositions"><b>Handler</b></label>
+			</span>
+			<span class="rowTight">
+				<label>Departments: </label>
+				<label id="dialogDepartments"><b>Inbound 1</b></label>
+			</span>
+		<!--</jqueryui-dialog>-->
+		</div>
+		<!--<jqueryui-dialog id="errorDialog" title="The following entries are not valid">-->
+		<div id="errorDialog" class="dialog" title="The following entries are not valid">
+			<div class="rowTight">
+				<span class="row">The following entries are missing: </span>
+				<div id="missingDataFields" class="row" style="white-space: pre-line;"></div>
+				<span class="row">The following entries contain invalid input: </span>
+				<div id="invalidDataFields" class="row" style="white-space: pre-line;"></div>
+			</div>
+		<!-- </jqueryui-dialog> -->
+		</div>
+		
+		<div id="modifyInventoryDialog" class="dialog" title="Write inventory to table?">
+			<div class="rowTight">
+				<span class="row"><span id="entryAddDelete">Add</span> <span id="entryAmount">1</span> units of the following inventory entry:</span>
+				<span class="rowTight">
+					<label>Item name: </label>
+					<label id="entryItem"><b>Books</b></label>
+				</span>
+				<span class="rowTight">
+					<label>Container name: </label>
+					<label id="entryContainer"><b>Skid 4</b></label>
+				</span>
+				<span class="rowTight">
+					<label>Location name: </label>
+					<label id="entryLocation"><b>Inventory</b></label>
+				</span>
+				<span class="row">?</span>
+			</div>
+		</div>
+		
+		<div id="invalidInventoryDialog" class="dialog" title="Problem with inventory entry">
+			<div class="rowTight">
+				<span class="row">The following problem exists with your inventory entry: </span>
+				<div id="missingEntries" class="hidden">
+					<span class="row">Missing entries</span>
+					<!--<div id="missingEntriesField" class="rowTight" style="white-space: pre-line;"></div>-->
+					<ul id="missingEntriesField" class="rowTight"></ul>
+				</div>
+				<div id="invalidEntries" class="hidden">
+					<span class="row">Invalid entries:</span>
+					<!--<div id="invalidEntriesField" class="rowTight" style="white-space: pre-line;"></div>-->
+					<ul id="invalidEntriesField" class="rowTight"></ul>
+				</div>
+				<div class="rowTight" id="otherIssues" style="white-space: pre-line;">
+					<span class="row">Other errors:</span>
+					<ul id="otherIssueField" class="rowTight"></ul>
+				</div>
+			</div>
+		</div>
+		
+		<div id="reportInventoryDialog" class="dialog" title="Report inventory item?">
+			<span class="row">Report the following inventory item: </span>
+			<div class="row">
+				<span class="rowTight">Item name: <span id="reportedItemName"><b></b></span></span>
+				<span class="rowTight">Item container: <span id="reportedItemContainer"><b></b></span></span>
+				<span class="rowTight">Item amount: <span id="reportedItemAmount"><b></b></span></span>
+				<span class="rowTight">Item location: <span id="reportedItemLocation"><b></b></span></span>
+			</div>
+			<span class="row">
+				to: <span id="inventoryManagement"></span>
+			</span>
+			<span class="row">
+				<span class="rowTight">Note (optional): </span>
+				<textarea class="fullWidth row"></textarea>
+			</span>
+			<span class="row">The person selected will receive e-mail instructing them to tally the selected item</span>
+		</div>
+	</body>
+</html>

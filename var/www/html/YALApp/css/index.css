@@ -1,0 +1,380 @@
+/* NOTE: .firstColumn,.secondColumn misleading names. All they really do, besides set display to inline-block, is change the width of the elements they are applied to. */
+
+body{
+		font: 62.5% "Trebuchet MS", sans-serif;
+		margin: 50px;
+	}
+.demoHeaders {
+	margin-top: 2em;
+}
+
+#pageHeader
+{
+	background-color: #5c9ccc; 
+	height: 20px;
+	color: white;
+	font-size: 150%;
+}
+
+#dialog-link {
+	padding: .4em 1em .4em 20px;
+	text-decoration: none;
+	position: relative;
+}
+#dialog-link span.ui-icon {
+	margin: 0 5px 0 0;
+	position: absolute;
+	left: .2em;
+	top: 50%;
+	margin-top: -8px;
+}
+#icons {
+	margin: 0;
+	padding: 0;
+}
+#icons li {
+	margin: 2px;
+	position: relative;
+	padding: 4px 0;
+	cursor: pointer;
+	float: left;
+	list-style: none;
+}
+#icons span.ui-icon {
+	float: left;
+	margin: 0 4px;
+}
+.fakewindowcontain .ui-widget-overlay {
+	position: absolute;
+}
+
+#inventoryModificationOptions
+{
+	width: 200px;
+}
+
+#employeeTable
+{
+	width: 100%;
+	margin: 1em 0;
+}
+
+table, th, td
+{
+	border: 1px solid #4297d7;
+	border-collapse: collapse;
+	overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+table:not(.ui-datepicker-calendar) tr:nth-child(even)
+{
+	background-color: #d5e8f6;
+}
+
+div > table
+{
+	max-width: 100%;
+	overflow: hidden;
+}
+
+#employeeTable > td> input
+{
+	width: 100%;
+}
+
+
+#tableDivFirstTab
+{
+	width: 71.5%;
+	max-width: 90%;
+}
+
+button + button
+{
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+.header
+{
+	position: relative;
+	display: block;
+}
+
+.table
+{
+	display: table;
+	border: 2px solid #777;
+}
+
+.tableRow
+{
+	display: table-row;
+	border: 2px solid #777 !important;
+}
+
+.tableCell
+{
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.tableCell:not(.nameCell):hover
+{
+	background: #afa !important;
+}
+
+.nameCell
+{
+	border-right: 2px solid #777 !important;
+}
+
+
+.tableCell,.hourHeading
+{
+	display: table-cell; 
+	background: #eee;
+	border: 1px solid #777;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+/*
+.tableCell,.hourHeading
+{
+	display: table-cell; 
+	background: #eee;
+	border: 1px solid #777;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}*/
+
+#availabilitySchedule .hourMark
+{
+	border-left: 2px solid #777;
+}
+
+#availabilitySchedule .available
+{
+	background: #0f0 !important;
+}
+
+
+.hourHeading
+{
+	/*padding-right: 3em;*/
+	text-align: center;
+	border-top: 2px solid #777;
+}
+
+#availabilitySchedule  .hourHeading:first-child
+{
+	border-left: 2px solid #777 !important;
+}
+
+#availabilitySchedule  .hourHeading:last-child
+{
+	border-right: 2px solid #777;
+}
+
+.defaultHeading:first-child
+{
+	width: 6.3125em;
+}
+
+.defaultHeading:not(:first-child)
+{
+	width: 6.28125em;
+}
+
+.twoColumnHeading
+{
+	width: 4.1875em;
+}
+/*
+.twoColumnHeading:first-child
+{
+	width: 4.1875em;
+}
+
+.twoColumnHeading:not(:first-child)
+{
+	width: 4.15625em;
+}
+*/
+
+.threeColumnHeading
+{
+	width: 6.375em;
+}
+
+/*
+.threeColumnHeading:first-child
+{
+	width: 6.3125em;
+}
+
+.threeColumnHeading:not(:first-child)
+{
+	width: 6.28125em;
+}*/
+
+.fourColumnHeading
+{
+	width: 8.625em;
+}
+/*.fourColumnHeading:first-child
+{
+	width: 8.5em;
+}
+
+.fourColumnHeading:not(:first-child)
+{
+	width: 8.4375em;
+}
+*/
+
+.fiveColumnHeading
+{
+	width: 10.75em;
+}
+/*
+.fiveColumnHeading:first-child
+{
+	width: 10.625em;
+}
+
+.fiveColumnHeading:not(:first-child)
+{
+	width: 10.5625em;
+}*/
+
+.sixColumnHeading
+{
+	width: 12.875em;
+}
+/*.sixColumnHeading:first-child
+{
+	width: 12.75em;
+}
+
+.sixColumnHeading:not(:first-child)
+{
+	width: 12.6875em;
+}
+*/
+.firstColumn
+{
+	width: 15%;
+}
+
+.secondColumn
+{
+	width: 60%;
+}
+
+/* Multi-width classes */
+.quintuple { width: 500%; }
+.quadruple { width: 400%; }
+.triple { width: 300%; }
+.double { width: 200%; }
+/* full width */
+.fullWidth { width: 100%; }
+/* Fractional-width classes */
+.nineteenTwentieths { width: 95%; }
+.nineTenths { width: 90%; }
+.sevenEighths { width: 87.5%; }
+.seventeenTwentieths { width: 85%; }
+.fiveSixths { width: 83.3333333333333333%; }
+.fourFifths { width: 80%; }
+.threeFourths { width: 75%; }
+.sevenTenths { width: 70%; }
+.twoThirds { width: 66.6666666666666667%; }
+.thirteenTwentieths { width: 65%; }
+.fiveEighths { width: 62.5%; }
+.threeFifths { width: 60%; }
+.elevenTwentieths { width: 55%; }
+.half { width: 50%; }
+.nineTwentieths { width: 45%;}
+.twoFifths { width: 40%; }
+.threeEighths { width: 37.5%; }
+.sevenTwentieths { width: 35%; }
+.third { width: 33.3333333333333333%; }
+.threeTenths { width: 30%; }
+.fourth { width: 25%;}
+.fifth { width: 20%; }
+.sixth { width: 16.6666666666666667%; }
+.eighth { width: 12.5%; }
+.threeTwentieths { width: 15%; }
+.tenth { width: 10%; }
+.twentieth { width: 5%;}
+
+.rowTight,.row
+{
+	display: block;
+}
+
+.row
+{
+	margin-top: 15px;
+}
+
+.firstColumn,.secondColumn,.column
+{
+	display: inline-block;
+}
+
+.center
+{
+	text-align: center;
+}
+
+.right
+{
+	float: right;
+}
+
+.lastRow
+{
+	margin-top:30px;
+}
+
+.invalid
+{
+	border: 1px solid red;
+}
+
+.hidden
+{
+	visibility: hidden;
+	display: none;
+}
+
+.number
+{
+	max-width: 100px;
+}
+
+.missingMessage
+{
+	color: red;
+}
+
+.invalidMessage
+{
+	color: #cccc00;
+}
+
+.textRight { text-align: right; }
+
+:not(td) > input[type="text"][:not(number)],input[type="email"],input[type="password"]
+{
+	min-width: 20%;
+}
+
+#selectedAmountToRemove
+{
+	margin-left: 10px;
+	width: 50px;
+}

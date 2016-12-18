@@ -1,0 +1,5 @@
+<select name="{{elementName}}">
+	{{#roles}}
+	<option id="{{.}}Option" data-inventory-manage="" {{#isTheRole}}{{.}}{{/isTheRole}}>{{.}}</option>
+	{{/roles}}
+</select>

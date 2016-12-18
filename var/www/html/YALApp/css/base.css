@@ -1,0 +1,50 @@
+/* Fractional-width classes */
+.fiveSixths { width: 83.3333333333333333%; }
+.fourFifths { width: 80%; }
+.threeFourths { width: 75%; }
+.twoThirds { width: 66.6666666666666667%; }
+.threeFifths { width: 60%; }
+.half { width: 50%; }
+.twoFifths { width: 40%; }
+.third { width: 33.3333333333333333%; }
+.fourth { width: 25%;}
+.fifth { width: 20%; }
+.sixth { width: 16.6666666666666667%; }
+
+.rowTight,.row
+{
+	display: block;
+}
+
+.row
+{
+	margin-top: 15px;
+}
+
+.center
+{
+	text-align: center;
+}
+
+.column
+{
+	display: inline-block;
+}
+
+.hidden
+{
+	visibility: hidden;
+	display: none;
+}
+
+.number
+{
+	max-width: 100px;
+}
+
+.invalid
+{
+	border: 1px solid red;
+}
+
+.textRight { text-align: right; }

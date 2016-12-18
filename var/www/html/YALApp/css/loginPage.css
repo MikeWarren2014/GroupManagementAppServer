@@ -89,7 +89,13 @@ body
 
 .textRight { text-align: right; }
 
-body > div
+.overlay
+{
+	z-index: 1;
+}
+
+
+body > div:not(.nostyle)
 {
 	border: 2px solid #a6c9e2;
 	border-radius: 5px;
@@ -120,4 +126,68 @@ body > div
 #loginForm input[type="text"], #loginForm input[type="password"]
 {
 	margin-left: -4px;
+}
+
+/**
+ * (C)Leanest CSS spinner ever
+ * Credit: Lea Verou @ lea.verou.me
+ */
+
+@keyframes spin {
+	to { transform: rotate(1turn); }
+}
+
+.progress {
+	position: relative;
+	display: inline-block;
+	width: 5em;
+	height: 5em;
+	margin: 0 .5em;
+	font-size: 12px;
+	text-indent: 999em;
+	overflow: hidden;
+	animation: spin 1s infinite steps(8);
+}
+
+.small.progress {
+	font-size: 6px;
+}
+
+.large.progress {
+	font-size: 24px;
+}
+
+.progress:before,
+.progress:after,
+.progress > div:before,
+.progress > div:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 2.25em; /* (container width - part width)/2  */
+	width: .5em;
+	height: 1.5em;
+	border-radius: .2em;
+	background: #eee;
+	box-shadow: 0 3.5em #eee; /* container height - part height */
+	transform-origin: 50% 2.5em; /* container height / 2 */
+}
+
+.progress:before {
+	background: #555;
+}
+
+.progress:after {
+	transform: rotate(-45deg);
+	background: #777;
+}
+
+.progress > div:before {
+	transform: rotate(-90deg);
+	background: #999;
+}
+
+.progress > div:after {
+	transform: rotate(-135deg);
+	background: #bbb;
 }

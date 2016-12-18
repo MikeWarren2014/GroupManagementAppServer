@@ -39,5 +39,33 @@
 				</span>
 			</form>
 		</div>
+		<div class="pageCenter hidden overlay nostyle">
+			<div class="progress"><div>Loading…</div></div>
+		</div>
+		
+		<!-- The dialog(s) -->
+		<div id="chooseUserPrototypeDialog" class="dialog" title="Choose sample user">
+			<span class="row">Choose a sample user to login as: </span>
+			<div class="row">
+				<span class="rowTight">
+					<input type="radio" name="sampleUserChoice" id="sampleUser1" />
+					<label for="sampleUser1">Mike Warren</label>
+					<input type="hidden" name="email" value="admin@mikewarren.me"></input>
+					<input type="hidden" name="password" value="Sample0x50617373"></input>
+				</span>
+				<span class="rowTight">
+					<input type="radio" name="sampleUserChoice" id="sampleUser2" />
+					<label for="sampleUser2">Kate Manager</label>
+					<input type="hidden" name="email" value="kate123@yahoo.com"></input>
+					<input type="hidden" name="password" value="noneofyourbusiness"></input>
+				</span>
+				<span class="rowTight">
+					<input type="radio" name="sampleUserChoice" id="sampleUser3" />
+					<label for="sampleUser3">Basic User</label>
+					<input type="hidden" name="email" value="sample.user@gmail.com"></input>
+					<input type="hidden" name="password" value="basic"></input>
+				</span>
+			</div>
+		</div>
 	</body>
 </html>

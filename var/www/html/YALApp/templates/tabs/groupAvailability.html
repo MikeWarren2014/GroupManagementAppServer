@@ -1,0 +1,33 @@
+<!--TODO: make template out of this -->
+<div id="{{tabName}}">
+	<div id="availabilityPanel">
+		<h3 class="demoHeaders">{{displayName}}</h3>
+		{{#privileges}}
+		<div class="buttonGroup" id="daysOfWeek">
+			<input type="radio" id="Sunday" name="radio"><label for="Sunday">Sunday</label>
+			<input type="radio" id="Monday" name="radio"><label for="Monday">Monday</label>
+			<input type="radio" id="Tuesday" name="radio"><label for="Tuesday">Tuesday</label>
+			<input type="radio" id="Wednesday" name="radio"><label for="Wednesday">Wednesday</label>
+			<input type="radio" id="Thursday" name="radio"><label for="Thursday">Thursday</label>
+			<input type="radio" id="Friday" name="radio"><label for="Friday">Friday</label>
+			<input type="radio" id="Saturday" name="radio"><label for="Saturday">Saturday</label>
+		</div>
+		<div id="availabilitySchedule" class="row">
+			<div id="SundayAvailability">
+			</div>
+			<div id="MondayAvailability">
+			</div>
+			<div id="TuesdayAvailability">
+			</div>
+			<div id="WednesdayAvailability">
+			</div>
+			<div id="ThursdayAvailability">
+			</div>
+			<div id="FridayAvailability">
+			</div>
+			<div id="SaturdayAvailability">
+			</div>
+		</div>
+		{{/privileges}}
+	</div>
+</div>

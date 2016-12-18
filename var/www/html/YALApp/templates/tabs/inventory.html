@@ -1,0 +1,260 @@
+<div id="{{tabName}}">
+	<div id="tableDivThirdTab">
+		<h3 class="demoHeaders">{{displayName}}</h3>
+		{{#privileges}}
+		<table id="inventoryTable">
+			<thead class="ui-widget-header">
+				<tr id="inventoryTableTitleRow">
+					<th>Item</th>
+					<th>Container</th>
+					<th>Amount</th>
+					<th>Location</th>
+					<!--<th>Report Item</th>
+					<th>Remove From List</th>	<!-- should this even be here? -->
+					<th>Options</th>
+				</tr>
+			</thead>
+			<tbody class="ui-widget-content">
+				<tr id="inventory1">
+					<td>
+						{{#edit}}
+						<input class="itemAutoComplete" name="item" value="Books"/>
+						{{/edit}}
+						{{^edit}}
+						Books
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input class="containerAutoComplete" name="container" value="Skid 1" />
+						{{/edit}}
+						{{^edit}}
+						Skid 1
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input class="spinner" name="amount" value="500" />
+						{{/edit}}
+						{{^edit}}
+						500
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input class="locationAutoComplete" name="location" value="Inventory"/>
+						{{/edit}}
+						{{^edit}}
+						Inventory
+						{{/edit}}
+					</td>
+					<td>
+						<!-- Report to inventory management button (should I use "ui-icon-contact" instead?) -->
+						<button class="ui-state-default ui-corner-all" title="Report item to inventory management" name="reportItem">
+							<span class="ui-icon ui-icon-clipboard"></span>
+						</button>
+						{{#edit}}
+						<!-- Delete current inventory entry -->
+						<button class="ui-state-default ui-corner-all" title="Delete current inventory entry">
+							<span class="ui-icon ui-icon-trash"></span>
+						</button> 
+						{{/edit}}
+					</td>
+				</tr>
+				<tr id="inventory2">
+					<td>
+						{{#edit}}
+						<input class="itemAutoComplete" name="item" value="Books"/>
+						{{/edit}}
+						{{^edit}}
+						Books
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input class="containerAutoComplete" name="container" value="Skid 2" />
+						{{/edit}}
+						{{^edit}}
+						Skid 2
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input class="spinner" name="amount" value="350" />
+						{{/edit}}
+						{{^edit}}
+						350
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input class="locationAutoComplete" name="location" value="Inventory"/>
+						{{/edit}}
+						{{^edit}}
+						Inventory
+						{{/edit}}
+					</td>
+					<td>
+						<!-- Report to inventory management button (should I use "ui-icon-contact" instead?) -->
+						<button class="ui-state-default ui-corner-all" title="Report item to inventory management" name="reportItem">
+							<span class="ui-icon ui-icon-clipboard"></span>
+						</button> 
+						{{#edit}}
+						<!-- Delete current inventory entry -->
+						<button class="ui-state-default ui-corner-all" title="Delete current inventory entry">
+							<span class="ui-icon ui-icon-trash"></span>
+						</button> 
+						{{/edit}}
+					</td>
+				</tr>
+				<tr id="inventory3">
+					<td>
+						{{#edit}}
+						<input class="itemAutoComplete" name="item" value="Books"/>
+						{{/edit}}
+						{{^edit}}
+						Books
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input class="containerAutoComplete" name="container" value="Skid 3" />
+						{{/edit}}
+						{{^edit}}
+						Skid 3
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input class="spinner" name="amount" value="3500" />
+						{{/edit}}
+						{{^edit}}
+						3500
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input class="locationAutoComplete" name="location" value="Inbound 1"/>
+						{{/edit}}
+						{{^edit}}
+						Inbound 1
+						{{/edit}}
+					</td>
+					<td>
+						<!-- Report to inventory management button (should I use "ui-icon-contact" instead?) -->
+						<button class="ui-state-default ui-corner-all" title="Report item to inventory management" name="reportItem">
+							<span class="ui-icon ui-icon-clipboard"></span>
+						</button> 
+						{{#edit}}
+						<!-- Delete current inventory entry -->
+						<button class="ui-state-default ui-corner-all" title="Delete current inventory entry">
+							<span class="ui-icon ui-icon-trash"></span>
+						</button>
+						{{/edit}}						
+					</td>
+				</tr>
+				<tr id="inventory4">
+					<td>
+						{{#edit}}
+						<input class="itemAutoComplete" name="item" value="Cards"/>
+						{{/edit}}
+						{{^edit}}
+						Cards
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input class="containerAutoComplete" name="container" value="Skid 2" />
+						{{/edit}}
+						{{^edit}}
+						Skid 2
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input class="spinner" name="amount" value="300" />
+						{{/edit}}
+						{{^edit}}
+						300
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input class="locationAutoComplete" name="location" value="Inventory"/>
+						{{/edit}}
+						{{^edit}}
+						Inventory
+						{{/edit}}
+					</td>
+					<td>
+						<!-- Report to inventory management button (should I use "ui-icon-contact" instead?) -->
+						<button class="ui-state-default ui-corner-all" title="Report item to inventory management" name="reportItem">
+							<span class="ui-icon ui-icon-clipboard"></span>
+						</button>
+						{{#edit}}						
+						<!-- Delete current inventory entry -->
+						<button class="ui-state-default ui-corner-all" title="Delete current inventory entry">
+							<span class="ui-icon ui-icon-trash"></span>
+						</button> 
+						{{/edit}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		{{#edit}}
+		<div class="row">
+			<button class="right">Save<button>
+		</div>
+		{{/edit}}
+	</div>
+	{{#edit}}
+	<div id="modifyInventory">
+		<h3 class="demoHeaders">Add/Remove Inventory</h3>
+		<span class="row center">
+			<label for="inventoryModificationOptions">Please select option: </label>
+			<select id="inventoryModificationOptions">
+				<!-- TODO: add menu option for reporting option -->
+				<option id="AddItemsOption">Add Items</option>
+				<option id="RemoveItemsOption">Remove Items</option>
+			</select>
+		</span>
+		<form>
+			<div class="row">
+				<h4 class="demoHeaders" id="inventoryModificationOption">Form</h4>	<!-- Only contains text to remove w3.org warning -->
+				<span class="rowTight">
+					<label for="itemToModify" class="firstColumn">Name of item: </label>
+					<input class="itemAutoComplete secondColumn" id="itemToModify" />
+					<span id="itemError" class="hidden">error</span>
+				</span>
+				<span class="rowTight">
+					<label for="itemContainer" class="firstColumn">Name of container: </label>
+					<input class="containerAutoComplete secondColumn" id="itemContainer" />
+					<span id="containerError" class="hidden">error</span>
+				</span>
+				<span class="rowTight">
+					<label for="itemLocation" class="firstColumn">Location: </label>
+					<input class="locationAutoComplete secondColumn" id="itemLocation" />
+					<span id="locationError" class="hidden">error</span>
+				</span>
+				<div class="rowTight">
+					<!-- TODO: add option for reporting entry -->
+					<span id="amountToAddRow" class="rowTight">
+						<label class="firstColumn">Amount to add: </label>
+						<input class="spinner secondColumn" id="amountToAdd" />
+					</span>
+					<div id="amountToRemoveRow" class="rowTight">
+						<label class="firstColumn">Amount to remove: </label>
+						<div class="slider secondColumn" id="amountToRemove"></div>
+						<input class="number textRight" type="text" id="selectedAmountToRemove" min="0"></input>
+					</div>
+				</div>
+				<div class="row center lastRow">
+					<button type="reset" id="ClearInventorySelections">Clear selections</button>
+					<input type="submit" id="submitInventoryModification" value="Modify Inventory"/>
+				</div>
+			</div>
+		</form>
+	</div>
+	{{/edit}}
+	{{/privileges}}
+</div>

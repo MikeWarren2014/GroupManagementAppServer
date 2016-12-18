@@ -1,0 +1,78 @@
+{{#userPrivileges}}
+{{#rowsData}}
+<tr id="{{rowID}}">
+	{{#cellsData}}
+	<td {{^edit}}name="firstName"{{/edit}}>
+		{{#edit}}
+		<input type="text" name="firstName" value="{{firstName}}" />
+		{{/edit}}
+		{{^edit}}
+		{{firstName}}
+		{{/edit}}
+	</td>
+	<td {{^edit}}name="lastName"{{/edit}}>
+		{{#edit}}
+		<input type="text" name="lastName" value="{{lastName}}" />
+		{{/edit}}
+		{{^edit}}
+		{{lastName}}
+		{{/edit}}
+	</td>
+	<td {{^edit}}name="email"{{/edit}}>
+		{{#edit}}
+		<input type="email" name="email" value="{{email}}" />
+		{{/edit}}
+		{{^edit}}
+		{{email}}
+		{{/edit}}
+	</td>
+	<td {{^edit}}name="phoneNumber"{{/edit}}>
+		{{#edit}}
+		<input type="tel" name="phoneNumber" value="{{phone}}" />
+		{{/edit}}
+		{{^edit}}
+		{{phone}}
+		{{/edit}}
+	</td>
+	<td {{^edit}}name="hireDate"{{/edit}}>
+		{{#edit}}
+		<input type="text" name="hireDate" class="datePicker" value="{{{joinDate}}}" />
+		{{/edit}}
+		{{^edit}}
+		{{{joinDate}}}
+		{{/edit}}
+	</td>
+	<!-- TODO: Find scalable way to template this -->
+	<!-- Suggestion: Let jQuery handle that. -->
+	<td {{^edit}}name="Roles"{{/edit}}>
+		{{#edit}}
+		<select name="Roles">
+			<option id="employeeOption" data-inventory-manage="false" selected>Employee</option>
+			<option id="salesPersonOption" data-inventory-manage="false">Sales</option>
+			<option id="receivingOption" data-inventory-manage="false">Receiving</option>
+			<option id="inventoryManagementOption" data-inventory-manage="true">Inventory Management</option>
+			<option id="handlerOption" data-inventory-manage="true">Handler</option>
+			<option id="managerOption" data-inventory-manage="true">Manager</option>
+			<option id="adminOption" data-inventory-manage="true">Admin</option>
+		</select>
+		{{/edit}}
+		{{^edit}}
+		{{userType}}
+		{{/edit}}
+	</td>
+	<td>
+		{{#edit}}
+			<button class="ui-state-default ui-corner-all" title="Delete User"><span class="ui-icon ui-icon-trash"></span></button>
+			<button class="ui-state-default ui-corner-all" title="Reset Password"><span class="ui-icon ui-icon-key"></span></button>
+			<button class="ui-state-default ui-corner-all" title="Save Changes"><span class="ui-icon ui-icon-disk"></span></button>
+		{{/edit}}
+		{{^edit}}
+		{{#isLoggedInUser}}
+		<button class="ui-state-default ui-corner-all" title="Reset Password"><span class="ui-icon ui-icon-key"></span></button>
+		{{/isLoggedInUser}}
+		{{/edit}}
+	</td>
+	{{/cellsData}}
+</tr>
+{{/rowsData}}
+{{/userPrivileges}}

@@ -1,0 +1,28 @@
+<!-- TODO: make template out of this -->
+<div id="{{tabName}}">
+	<h3 class="demoHeaders">{{displayName}}</h3>
+	{{#privileges}}
+	<p> Links to external sites, including other sites for this group, go here</p>
+	<ul id="linksList">
+	
+	</ul>
+	<!-- TODO: Make this form operational. -->
+	{{#edit}}
+	<h4 class="demoHeaders">Add external link</h4>
+	<form id="addExternalLink" method="get">
+		<span class="rowTight">
+			<label class="column tenth">Title of link:</label>
+			<input type="text" id="newLinkTitle" class="column fifth" title="The text that will display for this link. If nothing is entered here, the URL will display instead."></input>
+		</span>
+		<span class="rowTight">
+			<label class="column tenth">URL: </label>
+			<input type="text" class="column threeFifths" id="newLinkURL" />
+		</span>
+		<span class="row center lastRow">
+			<button type="reset" id="ClearExternalLinkForm">Clear</button>
+			<input type="submit" id="CreateExternalLink" value="Create Link" />
+		</span>
+	</form>
+	{{/edit}}
+	{{/privileges}}
+</div>

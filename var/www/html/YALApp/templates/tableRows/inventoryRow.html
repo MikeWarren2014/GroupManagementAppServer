@@ -1,0 +1,50 @@
+{{#userPrivileges}}
+{{#rowsData}}
+<tr id="{{rowID}}">
+	<td>
+		{{#edit}}
+		<input class="itemAutoComplete" name="item" value="Books"/>
+		{{/edit}}
+		{{^edit}}
+		Books
+		{{/edit}}
+	</td>
+	<td>
+		{{#edit}}
+		<input class="containerAutoComplete" name="container" value="Skid 1" />
+		{{/edit}}
+		{{^edit}}
+		Skid 1
+		{{/edit}}
+	</td>
+	<td>
+		{{#edit}}
+		<input class="spinner" name="amount" value="500" />
+		{{/edit}}
+		{{^edit}}
+		500
+		{{/edit}}
+	</td>
+	<td>
+		{{#edit}}
+		<input class="locationAutoComplete" name="location" value="Inventory"/>
+		{{/edit}}
+		{{^edit}}
+		Inventory
+		{{/edit}}
+	</td>
+	<td>
+		<!-- Report to inventory management button (should I use "ui-icon-contact" instead?) -->
+		<button class="ui-state-default ui-corner-all" title="Report item to inventory management" name="reportItem">
+			<span class="ui-icon ui-icon-clipboard"></span>
+		</button>
+		{{#edit}}
+		<!-- Delete current inventory entry -->
+		<button class="ui-state-default ui-corner-all" title="Delete current inventory entry">
+			<span class="ui-icon ui-icon-trash"></span>
+		</button> 
+		{{/edit}}
+	</td>
+</tr>
+{{/rowsData}}
+{{/userPrivileges}}

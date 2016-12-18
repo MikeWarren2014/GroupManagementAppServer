@@ -1,0 +1,361 @@
+<div id="{{tabName}}">
+	<div id="tableDivFirstTab">
+		<h3 class="demoHeaders">{{displayName}}</h3>
+		{{#privileges}}
+		<table id="employeeTable">
+			<thead class="ui-widget-header">
+				<tr id="titleRow">
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>E-mail</th>
+					<th>Phone number</th>
+					<th>Member Join Date</th>
+					<th>Role</th>
+					<!--<th>Department</th> <!-- To be deprecated -->
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody class="ui-widget-content">
+				<tr id="1">
+					<td>
+						{{#edit}}
+						<input type="text" name="firstName" value="Jill" />
+						{{/edit}}
+						{{^edit}}
+						Jill
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input type="text" name="lastName" value="Smith" />
+						{{/edit}}
+						{{^edit}}
+						Smith
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input type="email" name="email" value="jsmith@gmail.com" />
+						{{/edit}}
+						{{^edit}}
+						jsmith@gmail.com
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input type="tel" name="phoneNumber" value="(317)555-5555" />
+						{{/edit}}
+						{{^edit}}
+						(317)555-5555
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input type="text" name="hireDate" class="datePicker" value="12/6/2015" />
+						{{/edit}}
+						{{^edit}}
+						12/6/2015
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<select name="Roles">
+							<option id="employeeOption" data-inventory-manage="false" selected>Employee</option>
+							<option id="salesPersonOption" data-inventory-manage="false">Sales</option>
+							<option id="receivingOption" data-inventory-manage="false">Receiving</option>
+							<option id="inventoryManagementOption" data-inventory-manage="true">Inventory Management</option>
+							<option id="handlerOption" data-inventory-manage="true">Handler</option>
+							<option id="managerOption" data-inventory-manage="true">Manager</option>
+							<option id="adminOption" data-inventory-manage="true">Admin</option>
+						</select>
+						{{/edit}}
+						{{^edit}}
+						Employee
+						{{/edit}}
+					</td>
+					<!-- To be deprecated... -->
+					<td>
+						{{#edit}}
+						<select name="Departments">
+							<option id="inbound1Option" selected>Inbound 1</option>
+							<option id="inbound2Option">Inbound 2</option>
+							<option id="inbound3Option">Inbound 3</option>
+							<option id="outbound1Option">Outbound 1</option>
+							<option id="outbound2Option">Outbound 2</option>
+							<option id="outbound3Option">Outbound 3</option>
+							<option id="salesOption">Sales</option>
+							<option id="inventoryOption">Inventory</option>
+							<option id="itOption">IT</option>
+							<option id="managmentOption">Management</option>
+						</select>
+						{{/edit}}
+						{{^edit}}
+						Inbound 1
+						{{/edit}}
+					</td>
+					<td>
+					{{#edit}}
+						<button class="ui-state-default ui-corner-all" title="Delete User"><span class="ui-icon ui-icon-trash"></span></button>
+						<button class="ui-state-default ui-corner-all" title="Reset Password"><span class="ui-icon ui-icon-key"></span></button>
+						<button class="ui-state-default ui-corner-all" title="Save Changes"><span class="ui-icon ui-icon-disk"></span></button>
+					{{/edit}}
+					</td>
+				<tr id="2">
+					<td>
+						{{#edit}}
+						<input type="text" name="firstName" value="Mike" />
+						{{/edit}}
+						{{^edit}}
+						Mike
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input type="text" name="lastName" value="Warren" />
+						{{/edit}}
+						{{^edit}}
+						Warren
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input type="email" name="email" value="mwarren@gmail.com" />
+						{{/edit}}
+						{{^edit}}
+						mwarren@gmail.com
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input type="tel" name="phoneNumber" value="(317)909-0909" />
+						{{/edit}}
+						{{^edit}}
+						(317)909-0909
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<input type="text" name="hireDate" class="datePicker" value="1/11/2015" />
+						{{/edit}}
+						{{^edit}}
+						1/11/2015
+						{{/edit}}
+					</td>
+					<td>
+						{{#edit}}
+						<select name="Roles">
+							<option id="employeeOption" data-inventory-manage="false">Employee</option>
+							<option id="salesPersonOption" data-inventory-manage="false">Sales</option>
+							<option id="receivingOption" data-inventory-manage="false">Receiving</option>
+							<option id="inventoryManagementOption" data-inventory-manage="true">Inventory Management</option>
+							<option id="handlerOption" data-inventory-manage="true">Handler</option>
+							<option id="managerOption" data-inventory-manage="true">Manager</option>
+							<option id="adminOption" data-inventory-manage="true" selected>Admin</option>
+						</select>
+						{{/edit}}
+						{{^edit}}
+						Admin
+						{{/edit}}
+					</td>
+					<!-- To be deprecated... -->
+					<td>
+						{{#edit}}
+						<select name="Departments">
+							<option id="inbound1Option">Inbound 1</option>
+							<option id="inbound2Option">Inbound 2</option>
+							<option id="inbound3Option">Inbound 3</option>
+							<option id="outbound1Option">Outbound 1</option>
+							<option id="outbound2Option">Outbound 2</option>
+							<option id="outbound3Option">Outbound 3</option>
+							<option id="salesOption">Sales</option>
+							<option id="inventoryOption" selected>Inventory</option>
+							<option id="itOption">IT</option>
+							<option id="managmentOption">Management</option>
+						</select>
+						{{/edit}}
+						{{^edit}}
+						Inventory
+						{{/edit}}
+					</td>
+					<td>
+					{{#edit}}
+						<button class="ui-state-default ui-corner-all" title="Delete User"><span class="ui-icon ui-icon-trash"></span></button>
+						<button class="ui-state-default ui-corner-all" title="Reset Password"><span class="ui-icon ui-icon-key"></span></button>
+						<button class="ui-state-default ui-corner-all" title="Save Changes"><span class="ui-icon ui-icon-disk"></span></button>
+					{{/edit}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		{{#edit}}
+		<div class="row">
+			<button class="right">Save</button>
+		</div>
+		{{/edit}}
+	</div>
+	{{#edit}}
+	<div id="enterEmployee">
+		<h3 class="demoHeaders">Add new member</h3>
+		<div id="employeeEntryGuidelines">
+			<h4 class="demoHeaders row"><u>Data entry guidelines</u></h4>
+			<ul>
+				<li>First,Last name MUST be capitalized</li>
+				<li>Password MUST be provided and must meet the following criteria:</li>
+					<ul>
+						<li>minimum of 8 characters</li>
+						<li>have at least one numeric character</li>
+					</ul>
+				<li>
+					Phone number must be in one of the following formats: 
+					<ul>
+						<li>(xxx)xxx-xxxx</li>
+						<li>(xxx) xxx-xxxx</li>
+						<li>xxx-xxx-xxxx</li>
+						<li>xxxxxxxxxx</li>
+						<li>1xxxxxxxxxx</li>
+					</ul>
+				</li>
+				<li>At least one position,department must be selected for group member</li>
+			</ul>
+		</div>
+		<form id="hireEmployee" method="get">
+			<fieldset>
+				<div class="row">
+					<label for="firstName" class="firstColumn">First Name:</label>
+					<div class="secondColumn">
+						<input id="firstName" placeholder="First name" type="text"/>
+						<div id="firstNameNotification" class="ui-widget secondColumn hidden">
+							<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+								<p>
+									<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+									Incorrect first name format.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">							
+					<span class="firstColumn">Last Name:</span>
+					<div class="secondColumn">
+						<input id="lastName" placeholder="Last name" type="text"/>
+						<div id="lastNameNotification" class="ui-widget secondColumn hidden">
+							<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+								<p>
+									<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+									Incorrect last name format.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<label for="password" class="firstColumn">Password:</label>
+					<div class="secondColumn">
+						<input type="password" id="password" placeholder="Password"/>
+						<div id="passwordNotification" class="ui-widget secondColumn hidden">
+							<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+								<p>
+									<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+									Incorrect password format.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<label for="email" class="firstColumn">E-mail address:</label>
+					<div class="secondColumn">
+						<input type="email" id="email" placeholder="E-mail"/>
+						<div id="emailNotification" class="ui-widget secondColumn hidden">
+							<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+								<p>
+									<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+									Incorrect e-mail format.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<label for="employeePhoneNumber" class="firstColumn">Phone number:</label>
+					<div class="secondColumn">
+						<input type="tel" id="employeePhoneNumber" placeholder="(317)333-3333" />
+						<div id="phoneNumberNotification" class="ui-widget secondColumn hidden">
+							<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+								<p>
+									<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+									Incorrect phone number format.
+								</p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="row">
+					<label class="firstColumn">Member join date:</label>
+					<div class="secondColumn datePicker" id="datepicker"></div>
+				</div>
+				<div class="row">
+					<label class="firstColumn">Positions:</label>
+					<!-- Should this change to radio buttons? -->
+					<div class="secondColumn">
+						<input type="checkbox" name="positions" id="EmployeePosition" checked />
+						<label for="EmployeePosition">Employee</label>
+						<input type="checkbox" name="positions" id="SalesPosition" />
+						<label for="SalesPosition">Sales</label>
+						<input type="checkbox" name="positions" id="ReceivingPosition" />
+						<label for="ReceivingPosition">Receiving</label>
+						<input type="checkbox" name="positions" id="InventoryManagementPosition" />
+						<label for="InventoryManagementPosition">Inventory Management</label>
+						<input type="checkbox" name="positions" id="HandlerPosition">
+						<label for="HandlerPosition">Handler</label>
+						<input type="checkbox" name="positions" id="TechnicalSupportPosition" />
+						<label for="TechnicalSupportPosition">Technical Support</label>
+						<input type="checkbox" name="positions" id="ManagerPosition" />
+						<label for="ManagerPosition">Manager</label>
+						<div id="positionNotification" class="ui-widget secondColumn hidden">
+							<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+								<p>
+									<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+									Please select a position.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- To be deprecated... -->
+				<div class="row">
+					<label class="firstColumn">Department:</label>
+					<div class="secondColumn">
+						<input type="radio" name="departments" id="Inbound1Department" checked />
+						<label for="Inbound1Department">Inbound 1</label>
+						<input type="radio" name="departments" id="Inbound2Department"/>
+						<label for="Inbound2Department">Inbound 2</label>
+						<input type="radio" name="departments" id="Inbound3Department"/>
+						<label for="Inbound3Department">Inbound 3</label>
+						<input type="radio" name="departments" id="Outbound1Department"/>
+						<label for="Outbound1Department">Outbound 1</label>
+						<input type="radio" name="departments" id="Outbound2Department"/>
+						<label for="Outbound2Department">Outbound 2</label>
+						<input type="radio" name="departments" id="Outbound3Department"/>
+						<label for="Outbound3Department">Outbound 3</label>
+						<input type="radio" name="departments" id="SalesDepartment"/>
+						<label for="SalesDepartment">Sales</label>
+						<input type="radio" name="departments" id="InventoryDepartment"/>
+						<label for="InventoryDepartment">Inventory</label>
+						<input type="radio" name="departments" id="ITDepartment"/>
+						<label for="ITDepartment">IT</label>
+						<input type="radio" name="departments" id="ManagementDepartment"/>
+						<label for="ManagementDepartment">Management</label>
+					</div>
+				</div>
+				<div class="row center lastRow">
+					<button type="reset" id="ClearSelections">Clear selections</button>
+					<input type="submit" id="addRoles" value="Add Member/Roles"/>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	{{/edit}}
+	{{/privileges}}
+</div>
