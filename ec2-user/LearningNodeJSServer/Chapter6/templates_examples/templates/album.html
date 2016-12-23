@@ -1,0 +1,17 @@
+<div id="albumPage">
+	{{#photos}}
+	<p> There are {{ photos.length }} photos in this album </p>
+	<div id="photos">
+		<div class="photo">
+			<div class="photoHolder">
+				<img src="{{url}}" border="0" />
+			</div>
+			<div class="photoDesc"><p>{{ desc }}</p></div>
+		</div>
+	</div>
+	<div style="clear: left"></div>
+	{{/photos}}
+	{{^photos}}
+		<p> This album doesn't have any photos in it :( </p>
+	{{/photos}}
+</div>

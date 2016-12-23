@@ -1,0 +1,17 @@
+Long term TODO list:
+- maximize scalability of code
+	> Make parent-selection (namely a button somewhere in a <tr> element be able to select, and do something with that <tr> element it is in) scalable. HTML coder should be able to nest all they want, and your selection should 
+		still work.
+		> Look into .parents("someFilterHere") .
+- modify password field in #employeeTable
+	> if entry was freshly entered, password shows
+	> otherwise, there should exist no entry for it
+- modify logic of inventoryTable modifier so that, new items,containers,locations get written to database if they are not found in the HTML table (after user agrees to it)
+- make the auto-complete in Inventory form pull from database instead of from #inventoryTable
+- implement "Report Items" feature
+	> implement e-mail system for notifying person to re-count items
+- clone project into other folder
+	> other folder should be folder for implementing this into your for-real application
+- have server-side code modify default value of `group_member`.`GroupMemberGradYear` on a certain day
+	> day: first day admin, or other user, uses this service
+- make any AJAX requests that elements of the page make to the server have global attribute set to false

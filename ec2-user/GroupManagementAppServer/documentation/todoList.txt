@@ -1,0 +1,48 @@
+TODO list:
+- deprecate fields
+	> department(?)
+- work on remote database
+	> remote db credentials
+		> DB: group-inventory-management-db
+		> username: HeadAdmin
+		> password: group0x6d616e6167656d656e74746f6f6c
+- fix #employeeTable
+	> won't scale properly
+		> input elements in #employeeTable are 139 pixels
+		> smallest they can be is 120 pixels
+- learn DataTables
+- create inventoryHistoryTable
+	> devise plan for it
+		> use DataTables
+	> devise implementation
+		> write function that writes to the table
+- make sure that functions that write to tabels are also able to write to DataTables tables
+- fix #inventoryTable layout
+	> cells of added rows don't have same spacing as that of rows that were already there
+- create "Reported Items" table
+	> will be list of items reported for re-tallying
+	> each row will contain button for assigning re-tallying responsibility to anyone who has access to table modifier (admin,inventory management)
+		> on click, a checklist of Employees who have access to table modifier will pop up, as well as the item to report
+		> also, there will be cancel button and confirmation button
+			> for now, their name will be added to some table 
+			> long term, an e-mail should also be sent to their address
+- create "Report item" feature
+	> feature will be started by call to reportInventoryRow()
+		> decide logic of reportInventoryRow()
+	> make dialog-editing part more scalable
+		> write function that does the modification
+			> parameters: array of objects containing two fields, and id of row to edit (or the row object itself)
+				> first field: id of field that is to be edited
+				> second field: name of cell to pull it from
+- fix two buttons at the end of #inventoryTable (low priority)
+- make sure that warnings, input, and labels are, and stay on, the same line (low priority)
+- improve login prototype
+	> find better way to call User.checkPassword
+		> currently have to rely on setInterval()
+		> not suggested method
+			> suggested: 
+				> callback function
+				> promise (goto promisejs.org for this)
+				> generator (what's that?)
+- get server-side code serving static content over https
+- document that code!!!

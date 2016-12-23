@@ -1,0 +1,18 @@
+{
+	"name":"group-management-app-server",
+	"description" : "framework for organizations to track their inventory, members, and delegate inventory management to members",
+	"dependencies" : {
+		"express" : "4.x",
+		"async" : "3.9.x",
+		"mysql" : "2.x",
+		"bcrypt" : "0.x",
+		"client-sessions" : "0.7.0",
+		"body-parser" : "1.15.x",
+		"deep-equal" : "1.0.1"
+	},
+	"author" : 
+	{
+		"name" : "Mike Warren",
+		"email" : "mwarren04011990@gmail.com"
+	}
+}
