@@ -1,6 +1,0 @@
-math tutor      IUPUI Math Assistance Center    2014    2015
-dock worker     Pearson Education       2014    2014
-package handler FedEx Express   2013    2014
-math tutor      IUPUI Math Assistance Center    2010    2012
-package handler FedEx Ground    2008    2010
-a
