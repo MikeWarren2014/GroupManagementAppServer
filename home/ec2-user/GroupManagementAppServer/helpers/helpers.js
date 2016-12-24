@@ -16,11 +16,11 @@ exports.sendSuccess = function(res, data) {
 	res.end(JSON.stringify(output, null, '\t') + '\n');
 }
 
-exports.sendFailure = function(res, err) {
+exports.sendFailure = function(res, serverCode, err) {
 	console.log(err);
 	var code = (err.code) ? err.code : err.name;
-	res.writeHead(code, { "Content-Type" : "application/json" });
-	res.end(JSON.stringify({ error: err, message: err.message }, null, '\t') + '\n');
+	res.writeHead(serverCode, { "Content-Type" : "application/json" });
+	res.end(JSON.stringify({ error: code, message: err.message }, null, '\t') + '\n');
 }
 
 exports.makeError = function(err, msg)
@@ -35,5 +35,18 @@ exports.authFailed = function()
 {
 	return exports.makeError("auth_failure",
 		"Invalid username/password combo");
+}
+
+exports.httpCodeForError = function(err)
+{
+	switch (err.message) { 
+		case "invalid_resource": return 404;
+		case "invalid_data" : return 403;
+		case "no_such_user" : return 403;
+		case "auth_failure": return 401;
+		
+		console.log("*** Error needs HTTP response code: " + err.message);
+		return 503;
+	}
 }
 

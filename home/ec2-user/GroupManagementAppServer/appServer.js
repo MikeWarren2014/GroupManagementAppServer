@@ -4,7 +4,8 @@ var bodyParser = require('body-parser');
 var session = require('client-sessions');	
 
 var users = require('./helpers/users.js'),
-	helpers = require('./helpers/helpers.js');
+	helpers = require('./helpers/helpers.js'),
+	profileHandler = require('./helpers/profile.js');
 
 var fs = require('fs'),
 	path = require('path'),
@@ -32,26 +33,24 @@ function sendDependency(url, response)
 {
 	if (url !== "/favicon.ico") response.sendFile("/var/www/html" + url);
 }
-/*
-var privateKey = fs.readFileSync('/etc/pki/tls/private/serverKey.key').toString(),
-	certificate = fs.readFileSync('/etc/pki/tls/certs/2_mikewarren.me.crt').toString();
-	
-var options = {
-	key: privateKey,
-	cert: certificate
+
+var useSSL = true;
+var privateKey = '', certificate = '', intermediate = '';
+
+if (useSSL)
+{
+	privateKey   = fs.readFileSync('/etc/pki/tls/private/serverKey.key').toString();
+	certificate  = fs.readFileSync('/etc/pki/tls/certs/2_mikewarren.me.crt').toString();
+	intermediate = fs.readFileSync('/etc/pki/tls/certs/1_root_bundle.crt').toString();
 }
-*/
+
+var options = {
+	key : privateKey,
+	cert: certificate,
+	ca  : intermediate
+}
+
 //app.use(favicon(__dirname + '/public/favicon.ico'));
-// use session
-/*app.use(session({
-	cookieName: 'session',
-	secret: 'ckwtngqjqerrafourhpvi',
-	duration: 30 * 60 * 1000,
-	activeDuration: 15 * 60 * 1000,
-	httpOnly: true,
-	secure: true,
-	ephemeral: true
-}));*/
 
 app//.use(express.logger('dev'))
 	.use(bodyParser.urlencoded({ extended: true }))
@@ -64,6 +63,8 @@ app//.use(express.logger('dev'))
 	secure: true,
 	ephemeral: true
 }))
+	.get("/json/profile.json", profileHandler.profileInformation)
+	.get("/json/profile/:tableTemplateName.json", profileHandler.tableData)
 	.get("/YALApp/*", 
 		requirePageLogin,
 		function(req, res)
@@ -77,13 +78,10 @@ app//.use(express.logger('dev'))
 		}
 	)
 	.post('/service/login', users.login)
-	.get("/jQueryLib/*", 
-		function (req, res)
-		{
-			console.log('requesting crucial file...');
-			handleIncomingRequest(req, res);
-		}
-	)
+	.post('/service/logout', users.logout)
+	.get('/serverTest', serverCheck)
+	.get("/jQueryLib/*", handleIncomingRequest)
+	.get("/asyncLib/*", handleIncomingRequest)
 	.get("*",
 		function(req, res)
 		{
@@ -106,15 +104,26 @@ app//.use(express.logger('dev'))
 					"The requested file cannot be accessed: " + req.url), null, '\t') + '\n');
 		}
 	);
-app.listen(8080);
-/*https.createServer(options, app).listen(8080, function()
+
+if (useSSL)
 {
-	console.log("server listening on port 8080");
-});
-*/
+	https.createServer(options, app).listen(8443);
+	/*var otherApp = express().get('*', 
+		function(req, res) 
+		{ 
+			//console.log("listening on port 8080"); 
+			res.end("listening on port 8080");
+		}
+	);
+	otherApp.listen(8080);*/
+}
+else
+{
+	app.listen(8080);
+}
+
 function serveStaticFile(file, res)
 {
-	console.log("file == " + file);
 	var url = '/var/www/html' + file;
 	if (url.charAt(url.length - 1) == '/' || url.lastIndexOf('.') == -1)
 	{
@@ -166,3 +175,11 @@ function requirePageLogin(req, res, next)
 	else 
 		next();
 }
+
+// this should run always
+function serverCheck(req, res)
+{
+	res.writeHead(200, { "Content-Type" : "application/json" });
+	res.end(JSON.stringify({"status" : "ok"}, null, '\t'));
+}
+
