@@ -2,10 +2,10 @@ var pool = require('generic-pool');
 var async = require('async');
 var mysql = require('mysql');
 
-var host = "group-inventory-management-db.cu8hvhstcity.us-west-2.rds.amazonaws.com",
-	database = "group_inventory_management_db",
-	user = "HeadAdmin",
-	password = "group696e76656e746f727961646d696e";
+var host = "localhost",
+	database = "root",
+	user = "",
+	password = "";
 	
 var dbClient; 
 
