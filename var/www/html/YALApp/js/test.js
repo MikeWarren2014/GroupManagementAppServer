@@ -29,10 +29,11 @@ $(function() {
 	async.map(data, asyncProcess, function(err, results){
         alert(results);
     });*/
-	var displayName = tdata.displayName;
+	var displayName;
 	// TODO: rewrite this using async
 	a.complete(function()
 	{
+		displayName  = tdata.displayName;
 		renderedPage = $.mustache(template, tdata);
 		// loading all tabs the use has access to
 		var k = 0;
