@@ -29,6 +29,7 @@ $(function() {
 	async.map(data, asyncProcess, function(err, results){
         alert(results);
     });*/
+	var displayName = tdata.displayName;
 	// TODO: rewrite this using async
 	a.complete(function()
 	{
@@ -143,7 +144,8 @@ $(function() {
 			}
 		});
 		// setup the widgets on the page
-		loadWidgets();
+		$('body').removeClass('hidden');
+		loadWidgets(displayName);
 		// make logout POST to its destination
 		$('#logout').click(logout);
 	});
@@ -164,7 +166,9 @@ function logout(event)
 	});
 }
 
-function loadWidgets()
+// edited on December 30, 2016 by Michael Warren
+// parameter added: userDisplayName (string)
+function loadWidgets(userDisplayName)
 {
 	$( "#accordion" ).accordion();
 	
@@ -388,7 +392,7 @@ function loadWidgets()
 	$("#availabilitySchedule").children().each(function(j)
 	{
 		// setup the availability
-		generateAvailabilityGrid(this, 15, 9, 21);
+		generateAvailabilityGrid(this, 15, 9, 21, userDisplayName);
 		// find header div
 		var tableHeaderDiv = $(this).find('.header');
 		// move header over accordingly

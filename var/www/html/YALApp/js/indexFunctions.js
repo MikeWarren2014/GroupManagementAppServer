@@ -477,8 +477,12 @@ function createOptionArray(name, defaultValue)
 
 // function that generates the availability grid for availabilitySchedule
 // parameters: ID of container to write availability grid to (or index), size of interval block (in minutes, as integer), (optional) start time, (optional) end time
-function generateAvailabilityGrid(identifier, intervalSize, floatStartTime, floatEndTime)
+/* modified by Michael Warren on December 30, 2016 
+   parameter added: loggedInUser (string)
+ */
+function generateAvailabilityGrid(identifier, intervalSize, floatStartTime, floatEndTime, loggedInUser)
 {
+	loggedInUser = loggedInUser || 'Mike Warren';
 	// for good measure, define floatStartTime,floatEndTime as 9 AM,9 PM, respectively
 	floatStartTime = floatStartTime || 9;
 	floatEndTime = floatEndTime || 21;
@@ -546,7 +550,7 @@ function generateAvailabilityGrid(identifier, intervalSize, floatStartTime, floa
 						clickedOrDragged = true;
 						// if it is in the right row, toggle its 'available' class
 						// TODO: fetch name of logged in user and replace second argument of checkCellID() with that
-						if (checkCellID(this, "Mike Warren", name)) $(this).toggleClass('available');
+						if (checkCellID(this, loggedInUser, name)) $(this).toggleClass('available');
 					})
 				// if there was mouse leave
 				.mouseleave(
@@ -557,7 +561,7 @@ function generateAvailabilityGrid(identifier, intervalSize, floatStartTime, floa
 						{
 							// begin toggling highlighting of cells
 							var toElement = event.toElement;
-							if (($(toElement).hasClass('tableCell')) && (!$(toElement).hasClass('nameCell')) && (checkCellID(toElement, "Mike Warren")))
+							if (($(toElement).hasClass('tableCell')) && (!$(toElement).hasClass('nameCell')) && (checkCellID(toElement, loggedInUser)))
 							{
 								$(toElement).toggleClass('available');
 							}
