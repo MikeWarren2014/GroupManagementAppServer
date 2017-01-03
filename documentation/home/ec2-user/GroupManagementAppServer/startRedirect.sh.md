@@ -5,6 +5,7 @@
 This BASH file reads in up to two parameters. 
 - first parameter: source port
 - second parameter: destination port
+If only one parameter is specified, it is taken to be the source port.
 
 ### What This Script Does
 
