@@ -4,10 +4,10 @@ Discard me when you're done.
 
 ### Fake functions
 
-+ [functionA()](#functionA)
-+ [functionB()](#functionB())
-+ [functionC()](#functionC())
-+ [functionD()](#functionD())
++ [functionA()](#functiona)
++ [functionB()](#functionb)
++ [functionC()](#functionc)
++ [functionD()](#functiond)
 
 ### functionA()
 
